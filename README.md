@@ -87,11 +87,12 @@ Measured on a real setup: Windows 11 PC on gigabit Ethernet, Honor 200 Pro on a 
 ```mermaid
 xychart-beta
     title "Measured throughput (MB/s)"
-    x-axis ["PC to phone 500 MB", "PC to phone, screen off", "PC to phone 40 MB", "Phone to PC 40 MB", "Phone to PC 300 MB", "Raw TCP, no Send"]
+    x-axis ["PC→ 500MB", "PC→ off", "PC→ 40MB", "→PC 40MB", "→PC 300MB", "raw TCP"]
     y-axis "MB/s" 0 --> 14
     bar [11.1, 8.1, 10.8, 9.1, 3.0, 3.7]
 ```
 
+`PC→` is PC to phone, `→PC` is phone to PC, `off` is a 500 MB send with the phone's screen switched off, and `raw TCP` is the phone sending plain TCP with no Send code.
 The 2.4 GHz link tops out around 11 MB/s, and Send reaches it. The two low bars are the phone's *uplink* stalling in bursts on this
 router: plain TCP with no Send code at all (`nc` on the phone) averaged 3.7 MB/s over the same path, so that is the radio, not the app.
 On a 5 GHz network expect far more. Every transfer in these tests was verified by SHA-256 on the receiving side
@@ -100,10 +101,12 @@ On a 5 GHz network expect far more. Every transfer in these tests was verified b
 ```mermaid
 xychart-beta
     title "Time to connect (seconds)"
-    x-axis ["PC app starts", "Phone app opens", "Reconnect, known phone", "Full network scan"]
+    x-axis ["PC starts", "Phone opens", "Reconnect", "Full scan"]
     y-axis "seconds" 0 --> 3
     bar [1.2, 1.9, 0.65, 1.5]
 ```
+
+`PC starts`: Send.exe launched while the phone app is open. `Phone opens`: phone app opened while the PC app is running. `Reconnect`: a dropped connection to a known phone. `Full scan`: probing the whole local /24 with no known address.
 
 ```mermaid
 pie showData title Lines of code
