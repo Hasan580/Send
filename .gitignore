@@ -1,0 +1,13 @@
+*.jks
+keystore.properties
+local.properties
+build/
+.gradle/
+.kotlin/
+.idea/
+.vs/
+bin/
+obj/
+dist/
+*.user
+*.log

@@ -1,0 +1,35 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Send version on both devices, Windows version, Android version and phone model
+      placeholder: "Send 1.0.0 (both), Windows 11 24H2, Android 16, Honor 200 Pro"
+    validations:
+      required: true
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network
+      options:
+        - PC on Ethernet, phone on Wi-Fi
+        - PC and phone both on Wi-Fi
+        - Phone hotspot
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: VPN on either device? Router with AP/client isolation? Screenshots help.
