@@ -28,7 +28,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: android-actions/setup-android@v3
+      # The runner image already ships the Android SDK with its licenses accepted.
       - name: Build debug APK
         working-directory: android
         run: |
